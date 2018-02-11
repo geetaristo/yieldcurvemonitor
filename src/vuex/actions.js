@@ -1,12 +1,11 @@
-import getTreasuryYield from 'usTreasuryBondYeildParser.js'
+import getTreasuryYield from '../api/usTreasuryBondYeildParser'
 
 export const fetchTreasuryData = async ({commit}) => {
-  const entries = await getTresuryYield('2018')
+  const entries = await getTreasuryYield('2018')
   commit('ADD_TREASURY_DATA', entries)
 }
 
-export const changeTreasuryDataYear = ({commit}, year) => {
-
-  const entries = await getTresuryYield(year)
+export const changeTreasuryDataYear = async ({commit}, year) => {
+  const entries = await getTreasuryYield(year)
   commit('ADD_TREASURY_DATA', entries)
 }

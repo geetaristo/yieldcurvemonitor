@@ -1,14 +1,24 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <!-- {{ $store.state.treasuryData }} -->
-    <router-view/>
+      treasurydata
+    <hello-world> </hello-world>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld'
+
 export default {
-  name: 'App'
+  name: 'App',
+  vuex: {
+    getters: {
+      treasurydata: state => state.treasurydata
+    }
+  },
+  components: {
+    HelloWorld
+  }
 }
 </script>
 

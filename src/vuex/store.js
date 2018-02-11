@@ -4,12 +4,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  treasuryData: {oneYear: ['test data']}
+  treasurydata: 'empty data' // {oneYear: ['test data']}
 }
 
 const mutations = {
-  ADD_TREASURY_DATA (state, treasuryData) {
-    state.treasuryData = treasuryData
+  ADD_TREASURY_DATA (state, treasurydata) {
+    state.treasurydata = treasurydata
   }
 }
 
