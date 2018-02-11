@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{msg}}</h1>
+    {{treasurydata}}
   </div>
 </template>
 
@@ -15,6 +16,11 @@ export default {
   vuex: {
     getters: {
       treasurydata: state => state.treasurydata
+    }
+  },
+  computed: {
+    treasurydata () {
+      return this.$store.state.treasurydata
     }
   }
 }
