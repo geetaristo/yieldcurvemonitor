@@ -3,19 +3,17 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const state = { 
-  treasuryData: {}
-
+const state = {
+  treasuryData: {oneYear: ['test data']}
 }
 
-const mutations = { 
+const mutations = {
   ADD_TREASURY_DATA (state, treasuryData) {
-    state.treasuryData = treasuryData;
-  }  
+    state.treasuryData = treasuryData
+  }
 }
 
 export default new Vuex.Store({
   state,
   mutations
 })
-

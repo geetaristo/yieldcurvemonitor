@@ -1,11 +1,16 @@
-const http = require('http'),
-      moment = require('moment')
+// const http = require('http'),
+//       moment = require('moment')
 
-const { parseString } = require('xml2js')
+// const { parseString } = require('xml2js')
+
+import http from 'http'
+import moment from 'moment'
+import { parseString } from 'xml2js'
+
 
 const treasuryYieldDataPath = 'http://data.treasury.gov/feed.svc/DailyTreasuryYieldCurveRateData?$filter=year(NEW_DATE)%20eq%202018'
 
-function getYieldCurve(callback) { 
+function getYieldCurve(year, callback) { 
   const chunks = []
 
   console.log('retrieving US Treasury yield data: ', treasuryYieldDataPath)
@@ -44,6 +49,7 @@ function parseYieldEntry(entry) {
     sixMonth,
     oneYear,
     twoYear,
+    threeYear,
     fiveYear,
     sevenYear,
     tenYear,
@@ -55,10 +61,10 @@ function parseYieldEntry(entry) {
 
 
 
-export default getYieldEntries = (year) => {
+const getYieldEntries = (year) => {
 
-  return new Promise(function(resolve, reject) {
-    getYieldCurve(body => {
+  return new Promise(function(resolve) {
+    getYieldCurve(year, body => {
       parseString(body, (err, result) => {
         const entries = result.feed.entry.map(parseYieldEntry)
   
@@ -70,3 +76,5 @@ export default getYieldEntries = (year) => {
   })
 
 }
+
+export default getYieldEntries
